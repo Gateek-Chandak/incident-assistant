@@ -25,7 +25,7 @@ Make sure you have `dotenv-rails` in your Gemfile.
 ### 2. Frontend
 
 ```bash
-cd frontend
+cd client
 npm install
 npm run dev
 ```
