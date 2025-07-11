@@ -1,0 +1,85 @@
+  [1m[35mSQL (0.2ms)[0m  [1m[35mSET search_path TO public /*application='RailsApi'*/[0m
+  [1m[35m (237.1ms)[0m  [1m[35mCREATE DATABASE "rails_api_development" ENCODING = 'unicode' /*application='RailsApi'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='RailsApi'*/[0m
+  [1m[35m (73.3ms)[0m  [1m[35mCREATE DATABASE "rails_api_test" ENCODING = 'unicode' /*application='RailsApi'*/[0m
+  [1m[35m (21.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='RailsApi'*/[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='RailsApi'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4598764919443922325) /*application='RailsApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='RailsApi'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='RailsApi'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-07-11 04:41:19.914550', '2025-07-11 04:41:19.914553') RETURNING "key" /*application='RailsApi'*/[0m
+Migrating to CreateTranscriptLines (20250711044113)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='RailsApi'*/[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "transcript_lines" ("id" bigserial primary key, "speaker" character varying, "text" text, "order" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='RailsApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250711044113') RETURNING "version" /*application='RailsApi'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='RailsApi'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(4598764919443922325) /*application='RailsApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='RailsApi'*/[0m
+Started POST "/api/messages" for ::1 at 2025-07-11 00:47:48 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='RailsApi'*/[0m
+Processing by Api::MessagesController#create as */*
+  Parameters: {"message"=>{"speaker"=>"alice", "text"=>"Hello Rootly", "order"=>0}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='RailsApi',controller='messages'*/[0m
+  ↳ app/controllers/api/messages_controller.rb:4:in `create'
+  [1m[36mTranscriptLine Create (3.8ms)[0m  [1m[32mINSERT INTO "transcript_lines" ("speaker", "text", "order", "created_at", "updated_at") VALUES ('alice', 'Hello Rootly', 0, '2025-07-11 04:47:48.852080', '2025-07-11 04:47:48.852080') RETURNING "id" /*action='create',application='RailsApi',controller='messages'*/[0m
+  ↳ app/controllers/api/messages_controller.rb:4:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*action='create',application='RailsApi',controller='messages'*/[0m
+  ↳ app/controllers/api/messages_controller.rb:4:in `create'
+Completed 201 Created in 50ms (Views: 0.2ms | ActiveRecord: 20.7ms (1 query, 0 cached) | GC: 7.5ms)
+
+
+[dotenv] Set [36mOPENAI_API_KEY[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mOPENAI_API_KEY[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mOPENAI_API_KEY[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mOPENAI_API_KEY[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mOPENAI_API_KEY[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mOPENAI_API_KEY[0m
+[dotenv] Loaded [33m.env[0m
+Started POST "/api/messages" for ::1 at 2025-07-11 01:03:22 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='RailsApi'*/[0m
+Error occurred while parsing request parameters.
+Contents:
+
+{"message": {"speaker": "alice", "text": "Looks like API is fine but analytics is down as well - lets
+Processing by Api::MessagesController#create as */*
+Completed 400 Bad Request in 6ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionDispatch::Http::Parameters::ParseError (Error occurred while parsing request parameters)
+Caused by: JSON::ParserError (unexpected end of input, expected closing " at line 1 column 102)
+
+Information for: ActionDispatch::Http::Parameters::ParseError (Error occurred while parsing request parameters):
+  
+app/controllers/api/messages_controller.rb:38:in `message_params'
+app/controllers/api/messages_controller.rb:4:in `create'
+
+Information for cause: JSON::ParserError (unexpected end of input, expected closing " at line 1 column 102):
+  
+app/controllers/api/messages_controller.rb:38:in `message_params'
+app/controllers/api/messages_controller.rb:4:in `create'
+Started POST "/api/messages" for ::1 at 2025-07-11 01:04:42 -0400
+Processing by Api::MessagesController#create as */*
+  Parameters: {"message"=>{"speaker"=>"alice", "text"=>"Looks like API is fine but analytics is down as well - let's record that both Web and Analytics are affected on the incident record please under Affected Services", "order"=>0}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='RailsApi',controller='messages'*/[0m
+  ↳ app/controllers/api/messages_controller.rb:4:in `create'
+  [1m[36mTranscriptLine Create (4.9ms)[0m  [1m[32mINSERT INTO "transcript_lines" ("speaker", "text", "order", "created_at", "updated_at") VALUES ('alice', 'Looks like API is fine but analytics is down as well - let''s record that both Web and Analytics are affected on the incident record please under Affected Services', 0, '2025-07-11 05:04:42.908599', '2025-07-11 05:04:42.908599') RETURNING "id" /*action='create',application='RailsApi',controller='messages'*/[0m
+  ↳ app/controllers/api/messages_controller.rb:4:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT /*action='create',application='RailsApi',controller='messages'*/[0m
+  ↳ app/controllers/api/messages_controller.rb:4:in `create'
+Completed 201 Created in 116ms (Views: 0.8ms | ActiveRecord: 48.9ms (1 query, 0 cached) | GC: 17.7ms)
+
+
+Started POST "/api/messages/2/suggestions" for ::1 at 2025-07-11 01:05:10 -0400
+Processing by Api::MessagesController#suggestions as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mTranscriptLine Load (18.5ms)[0m  [1m[34mSELECT "transcript_lines".* FROM "transcript_lines" WHERE "transcript_lines"."id" = 2 LIMIT 1 /*action='suggestions',application='RailsApi',controller='messages'*/[0m
+  ↳ app/controllers/api/messages_controller.rb:9:in `suggestions'
+Completed 200 OK in 1026ms (Views: 0.1ms | ActiveRecord: 18.5ms (1 query, 0 cached) | GC: 0.3ms)
+
+
