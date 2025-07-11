@@ -1,2 +1,0 @@
-class TranscriptLine < ApplicationRecord
-end

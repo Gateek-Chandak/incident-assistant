@@ -1,24 +1,13 @@
-# README
+# Incident Assistant API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
+- Ruby 3.x, Rails 8.x
+- Add your OpenAI API key to `.env` as `OPENAI_API_KEY=...`
+- `bundle install`
+- `rails server`
 
-Things you may want to cover:
+## Endpoints
+- POST `/api/messages` — Analyze a message
+- POST `/api/generate-report` — Generate a summary report
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## That's it!

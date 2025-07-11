@@ -1,51 +1,43 @@
 source "https://rubygems.org"
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+# Core Rails framework
 gem "rails", "~> 8.0.2"
-# Use postgresql as the database for Active Record
+
+# Database
 gem "pg", "~> 1.1"
-# Use the Puma web server [https://github.com/puma/puma]
+
+# Web server
 gem "puma", ">= 5.0"
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
-# gem "jbuilder"
 
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
+# Timezone data for Windows/JRuby
+gem "tzinfo-data", platforms: %i[windows jruby]
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ windows jruby ]
+# Rails infrastructure gems
+gem "solid_cache"      # Database-backed cache
+gem "solid_queue"      # Database-backed job queue
+gem "solid_cable"      # Database-backed Action Cable
 
-# Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
-gem "solid_cache"
-gem "solid_queue"
-gem "solid_cable"
+# Performance and deployment
+gem "bootsnap", require: false  # Reduces boot times through caching
+gem "kamal", require: false     # Docker deployment
+gem "thruster", require: false  # HTTP asset caching/compression
 
-# Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
+# External API integration
+gem "ruby-openai", "~> 8.1"    # OpenAI API client
 
-# Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
-gem "kamal", require: false
+# CORS support for cross-origin requests
+gem "rack-cors"
 
-# Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
-gem "thruster", require: false
-
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
-
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
-# gem "rack-cors"
+# Environment variable management
+gem "dotenv-rails", groups: [:development, :test]
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  # Debugging
+  gem "debug", platforms: %i[mri windows], require: "debug/prelude"
 
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
+  # Security analysis
   gem "brakeman", require: false
 
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  # Code style enforcement
   gem "rubocop-rails-omakase", require: false
 end
-
-gem 'dotenv-rails', groups: [:development, :test]
-
-gem "ruby-openai", "~> 8.1"
